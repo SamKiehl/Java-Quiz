@@ -5,7 +5,7 @@ import java.util.Collections;
 public class Quiz{
     private String name; // Name of the Quiz
     private ArrayList<Flashcard> flashcards; // The set of flashcard objects contained in the set.
-    private Scanner input = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in); 
 
     public Quiz(){ // 0 parameter constructor
         this.name = "New Quiz";
@@ -46,8 +46,10 @@ public class Quiz{
     public void removeAllCards(){this.flashcards = new ArrayList<Flashcard>();} // Empty a Quiz of all it's Flashcards
 
     public void write(){ // Default Write mode, Front is shown, Back is the response.
-        Collections.shuffle(this.flashcards);
-        for(Flashcard f : this.flashcards){
+        ArrayList<Flashcard> fs = copy(this.flashcards);
+        Collections.shuffle(fs);
+
+        for(Flashcard f : fs){
             System.out.println(f.getFront());
             System.out.print("  Answer: ");
             String answer = input.nextLine();
@@ -63,9 +65,10 @@ public class Quiz{
     }
 
     public void write(char s){ // Parameterized Write mode, Choose which side of the card is shown.
-        
-        Collections.shuffle(this.flashcards);
-        for(Flashcard f : this.flashcards){
+        ArrayList<Flashcard> fs = copy(this.flashcards);
+        Collections.shuffle(fs);
+
+        for(Flashcard f : fs){
             String show, resp;
             if(s == 'b'){
                 show = f.getBack();
@@ -74,7 +77,6 @@ public class Quiz{
                 show = f.getFront();
                 resp = f.getBack();
             }
-
             System.out.println(show);
             System.out.print("  Answer: ");
             String answer = input.nextLine();
@@ -125,8 +127,10 @@ public class Quiz{
         
         german.write();
 
-        german.write('b');
+        // german.write('b');
 
-        german.write('f');
+        // german.write('f');
+
+        System.out.println(german);
     }
 }
