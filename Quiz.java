@@ -7,6 +7,7 @@ public class Quiz{
     private ArrayList<Flashcard> flashcards; // The set of flashcard objects contained in the set.
     private Scanner input = new Scanner(System.in); 
 
+    // On Quizlet, this preset is (_:_) between term and definition, and (" | \n+") between rows.
     private static final String BTWN_TERMS = " \\| "; // Delimiter between Flashcards entered in series in one string.
     private static final String BTWN_SIDES = " \\: "; // Delimiter between term and definition on ^above^ mentioned Flashcards.
 
@@ -109,6 +110,7 @@ public class Quiz{
             System.out.println("There are no Flashcards in this Quiz!");
             return;
         }
+        ArrayList<String> wrongs = new ArrayList<String>();
         ArrayList<Flashcard> fs = copy(this.flashcards);
         Collections.shuffle(fs);
         int totalPts = fs.size();
@@ -130,8 +132,16 @@ public class Quiz{
                 return;
             if(answer.equals(resp))
                 pts++;
+            else{
+                wrongs.add(f.toString() + " => You said: " + answer);
+            }
         }
-        System.out.println("Finished! Score: " + (int)(pts * 100 / totalPts) + "%\n\n");
+        System.out.println("Finished! Score: " + pts + "/" + totalPts + " (" + (int)(pts * 100 / totalPts) + "%" + ")");
+        if(wrongs.size() > 0){
+            System.out.println("Here's what you got wrong: ");
+            for(String w : wrongs)
+                System.out.println(w);
+        }
     }
 
     public static ArrayList<Flashcard> copy(ArrayList<Flashcard> other){ // Returns an exact copy of a Flashcard arraylist
@@ -163,108 +173,110 @@ public class Quiz{
         "das Altenheim : nursing home | " + 
         "begegnen : to meet | " + 
         "die Bewegung : movement | " + 
-        "ungefähr : approximately | " + 
-        "der Patient : patient | " + 
-        "einnehmen : to take in | " + 
-        "unheimlich : scary, eerie | " + 
-        "erleichtern : to facilitate | " + 
-        "der Kranke : sick person | " + 
-        "isoliert : isolated | " + 
-        "zu Hause : at home | " + 
-        "die Beschäftigung : occupation | " + 
-        "die Industrie : industry | " + 
-        "die Produktion : production | " + 
-        "der Betrieb : business, company | " + 
-        "menschlich : humane | " + 
-        "der Arbeiter : worker | " + 
-        "der Angestellte : employee | " + 
-        "verschwinden : to disappear | " + 
-        "der Arbeitsplatz : workplace | " + 
-        "der Abschnitt : section | " + 
-        "die Einleitung : introduction | " + 
-        "springen : to jump | " + 
-        "lösen : to solve | " + 
-        "der Badeanzug : bathing suit | " + 
-        "die Badehose : swimming trunks | " + 
-        "alternativ : alternative | " + 
-        "verbrauchen : to consume | " + 
-        "wegen : because of | " + 
-        "zahlreich : numerous | " + 
-        "nachdenken über : to reflect about | " + 
-        "handeln : to deal, trade | " + 
-        "das Klima : climate | " + 
-        "der Klimawandel : climate change | " + 
-        "verschwenden : to waste | " + 
-        "die Luft : air, breeze | " + 
-        "der Kunststoff : synthetic material | " + 
-        "das Insekt : insect | " + 
-        "öffentlich : public | " + 
-        "kostenlos : free of charge | " + 
-        "der Umweltschutz : environmental protection | " + 
-        "der Vortrag : lecture | " + 
-        "der Zuhörer : audience | " + 
-        "verständlich : comprehensible | " + 
-        "die Präsentation : presentation | " + 
-        "die Folie : slide | " + 
-        "der Inhalt : content | " + 
-        "die Struktur : structure | " + 
-        "das Erlebnis : experience | " + 
-        "der Zusammenhang : connection, context | " + 
-        "der Abschluss : degree | " + 
-        "die Aufmerksamkeit : attention | " + 
-        "die Kommunikation : communication | " + 
-        "die Temperatur : temperature | " + 
-        "die Wissenschaft : science | " + 
-        "die Musikanlage : stereo | " + 
-        "die Klimaanlage : air conditioning | " + 
-        "der Staub : dust | " + 
-        "kommunizieren : to communicate | " + 
-        "passend : suitable | " + 
-        "die Technologie : technology | " + 
-        "die Jugend : youth | " + 
-        "forschen : to research; to investigate | " + 
-        "anschließen : to plug in | " + 
-        "erfinden : to invent | " + 
-        "die Erfindung : invention | " + 
-        "jederzeit : at any time | " + 
-        "der Alarm : alarm | " + 
-        "entwickeln : to develop | " + 
-        "warnen vor : to warn about | " + 
-        "der Unternehmer : entrepreneur, employer | " + 
-        "die Bremse : brake (car) | " + 
-        "der Strom : electricity, power | " + 
-        "das Teil : part | " + 
-        "der Wahnsinn : madness | " + 
-        "die Datei : file | " + 
-        "zeichnen : to draw | " + 
-        "die Abgase : exhaust fumes | " + 
-        "die Bedeutung : meaning | " + 
-        "das Benzin : gasoline, fuel | " + 
-        "das E-Bike : electric bike | " + 
-        "elektrisch : electric | " + 
-        "die Energie : energy, power | " + 
-        "die Ladestation : charging station | " + 
-        "die Steckdose : electrical outlet | " + 
-        "tanken : to fill up | " + 
-        "die Tankstelle : gas station | " + 
-        "umweltfreundlich : environmentally friendly | " + 
-        "sondern : but rather | " + 
-        "die Elektromobilität : electromobility | " + 
-        "die Meldung : announcement | " + 
-        "die Medizin : medicine | " + 
-        "das Gehirn : brain | " + 
-        "ersetzen : to replace | " + 
-        "die Entdeckung : discovery | " + 
-        "die Pflanze : plant | " + 
-        "der Mond : moon | " + 
-        "mieten : to rent | " + 
-        "wundern : to wonder about | " + 
-        "einsetzen : to insert | " + 
-        "die Forschung : research | " + 
-        "die Wirklichkeit : reality | " + 
-        "selbständig : independent | " + 
-        "benötigen : to need | " + 
+        // "ungefähr : approximately | " + 
+        // "der Patient : patient | " + 
+        // "einnehmen : to take in | " + 
+        // "unheimlich : scary, eerie | " + 
+        // "erleichtern : to facilitate | " + 
+        // "der Kranke : sick person | " + 
+        // "isoliert : isolated | " + 
+        // "zu Hause : at home | " + 
+        // "die Beschäftigung : occupation | " + 
+        // "die Industrie : industry | " + 
+        // "die Produktion : production | " + 
+        // "der Betrieb : business, company | " + 
+        // "menschlich : humane | " + 
+        // "der Arbeiter : worker | " + 
+        // "der Angestellte : employee | " + 
+        // "verschwinden : to disappear | " + 
+        // "der Arbeitsplatz : workplace | " + 
+        // "der Abschnitt : section | " + 
+        // "die Einleitung : introduction | " + 
+        // "springen : to jump | " + 
+        // "lösen : to solve | " + 
+        // "der Badeanzug : bathing suit | " + 
+        // "die Badehose : swimming trunks | " + 
+        // "alternativ : alternative | " + 
+        // "verbrauchen : to consume | " + 
+        // "wegen : because of | " + 
+        // "zahlreich : numerous | " + 
+        // "nachdenken über : to reflect about | " + 
+        // "handeln : to deal, trade | " + 
+        // "das Klima : climate | " + 
+        // "der Klimawandel : climate change | " + 
+        // "verschwenden : to waste | " + 
+        // "die Luft : air, breeze | " + 
+        // "der Kunststoff : synthetic material | " + 
+        // "das Insekt : insect | " + 
+        // "öffentlich : public | " + 
+        // "kostenlos : free of charge | " + 
+        // "der Umweltschutz : environmental protection | " + 
+        // "der Vortrag : lecture | " + 
+        // "der Zuhörer : audience | " + 
+        // "verständlich : comprehensible | " + 
+        // "die Präsentation : presentation | " + 
+        // "die Folie : slide | " + 
+        // "der Inhalt : content | " + 
+        // "die Struktur : structure | " + 
+        // "das Erlebnis : experience | " + 
+        // "der Zusammenhang : connection, context | " + 
+        // "der Abschluss : degree | " + 
+        // "die Aufmerksamkeit : attention | " + 
+        // "die Kommunikation : communication | " + 
+        // "die Temperatur : temperature | " + 
+        // "die Wissenschaft : science | " + 
+        // "die Musikanlage : stereo | " + 
+        // "die Klimaanlage : air conditioning | " + 
+        // "der Staub : dust | " + 
+        // "kommunizieren : to communicate | " + 
+        // "passend : suitable | " + 
+        // "die Technologie : technology | " + 
+        // "die Jugend : youth | " + 
+        // "forschen : to research; to investigate | " + 
+        // "anschließen : to plug in | " + 
+        // "erfinden : to invent | " + 
+        // "die Erfindung : invention | " + 
+        // "jederzeit : at any time | " + 
+        // "der Alarm : alarm | " + 
+        // "entwickeln : to develop | " + 
+        // "warnen vor : to warn about | " + 
+        // "der Unternehmer : entrepreneur, employer | " + 
+        // "die Bremse : brake (car) | " + 
+        // "der Strom : electricity, power | " + 
+        // "das Teil : part | " + 
+        // "der Wahnsinn : madness | " + 
+        // "die Datei : file | " + 
+        // "zeichnen : to draw | " + 
+        // "die Abgase : exhaust fumes | " + 
+        // "die Bedeutung : meaning | " + 
+        // "das Benzin : gasoline, fuel | " + 
+        // "das E-Bike : electric bike | " + 
+        // "elektrisch : electric | " + 
+        // "die Energie : energy, power | " + 
+        // "die Ladestation : charging station | " + 
+        // "die Steckdose : electrical outlet | " + 
+        // "tanken : to fill up | " + 
+        // "die Tankstelle : gas station | " + 
+        // "umweltfreundlich : environmentally friendly | " + 
+        // "sondern : but rather | " + 
+        // "die Elektromobilität : electromobility | " + 
+        // "die Meldung : announcement | " + 
+        // "die Medizin : medicine | " + 
+        // "das Gehirn : brain | " + 
+        // "ersetzen : to replace | " + 
+        // "die Entdeckung : discovery | " + 
+        // "die Pflanze : plant | " + 
+        // "der Mond : moon | " + 
+        // "mieten : to rent | " + 
+        // "wundern : to wonder about | " + 
+        // "einsetzen : to insert | " + 
+        // "die Forschung : research | " + 
+        // "die Wirklichkeit : reality | " + 
+        // "selbständig : independent | " + 
+        // "benötigen : to need | " + 
         "allerdings : certainly, indeed | ");
         System.out.println(german);
+
+        german.test('b');
     }
 }
