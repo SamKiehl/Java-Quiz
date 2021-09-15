@@ -7,6 +7,9 @@ public class Quiz{
     private ArrayList<Flashcard> flashcards; // The set of flashcard objects contained in the set.
     private Scanner input = new Scanner(System.in); 
 
+    // private static final String BTWN_TERMS = "|";
+    // private static final String BTWN_SIDES = "|";
+
     public Quiz(){ // 0 parameter constructor
         this.name = "New Quiz";
         this.flashcards = new ArrayList<Flashcard>();
@@ -45,26 +48,15 @@ public class Quiz{
 
     public void removeAllCards(){this.flashcards = new ArrayList<Flashcard>();} // Empty a Quiz of all it's Flashcards
 
-    public void write(){ // Default Write mode, Front is shown, Back is the response.
-        ArrayList<Flashcard> fs = copy(this.flashcards);
-        Collections.shuffle(fs);
-
-        for(Flashcard f : fs){
-            System.out.println(f.getFront());
-            System.out.print("  Answer: ");
-            String answer = input.nextLine();
-            while(!answer.equals(f.getBack())){
-                System.out.println("Incorrect!\n");
-                System.out.println(f.getFront());
-                System.out.print("  Answer: ");
-                answer = input.nextLine();
-            }
-            System.out.println("Correct!\n");
-        }
-        System.out.println("Congrats, you've studied all of this Quiz's Flashcards!");
+    public void write(){ // Default Write mode, Front is shown, Back is the response
+        this.write('f');
     }
 
-    public void write(char s){ // Parameterized Write mode, Choose which side of the card is shown.
+    public void write(char s){ // Parameterized Write mode, Choose which side of the card is shown
+        if(this.flashcards.size() == 0){
+            System.out.println("There are no Flashcards in this Quiz!");
+            return;
+        }
         ArrayList<Flashcard> fs = copy(this.flashcards);
         Collections.shuffle(fs);
 
@@ -80,15 +72,53 @@ public class Quiz{
             System.out.println(show);
             System.out.print("  Answer: ");
             String answer = input.nextLine();
+            if(answer.equals("quit"))
+                return;
             while(!answer.equals(resp)){
                 System.out.println("Incorrect!\n");
                 System.out.println(show);
                 System.out.print("  Answer: ");
                 answer = input.nextLine();
+                    if(answer.equals("quit"))
+                return;
             }
             System.out.println("Correct!\n");
         }
-        System.out.println("Congrats, you've studied all of this Quiz's Flashcards!");
+        System.out.println("Congrats, you've studied all of this Quiz's Flashcards!\n\n");
+    }
+
+    public void test(){ // Default test
+        this.test('f');
+    }
+
+    public void test(char s){ // Parameterized test; accepts any answer and returns a score at the end
+        if(this.flashcards.size() == 0){
+            System.out.println("There are no Flashcards in this Quiz!");
+            return;
+        }
+        ArrayList<Flashcard> fs = copy(this.flashcards);
+        Collections.shuffle(fs);
+        int totalPts = fs.size();
+        int pts = 0;
+
+        for(Flashcard f : fs){
+            String show, resp;
+            if(s == 'b'){
+                show = f.getBack();
+                resp = f.getFront();
+            }else{
+                show = f.getFront();
+                resp = f.getBack();
+            }
+            System.out.println(show);
+            System.out.print("  Answer: ");
+            String answer = input.nextLine();
+            if(answer.equals("quit"))
+                return;
+            if(answer.equals(resp))
+                pts++;
+        }
+        System.out.println("Finished! Score: " + (int)(pts * 100 / totalPts) + "%\n\n");
     }
 
     public static ArrayList<Flashcard> copy(ArrayList<Flashcard> other){ // Returns an exact copy of a Flashcard arraylist
@@ -111,26 +141,6 @@ public class Quiz{
 
     public static void main(String[] args){
         Quiz german = new Quiz();
-        System.out.println(german);
-
-        german.addFlashcard("gehen", "to go");
-        System.out.println(german);
-
-        german.addFlashcard("der Apfel", "apple");
-        System.out.println(german);
-
-        german.addFlashcard("das Gehirn", "brain");
-        System.out.println(german);
-
-        german.addFlashcard("die Bedeutung", "meaning");
-        System.out.println(german);
-        
-        german.write();
-
-        // german.write('b');
-
-        // german.write('f');
-
-        System.out.println(german);
+        german.setName("German");
     }
 }
