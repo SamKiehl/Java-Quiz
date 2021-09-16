@@ -47,9 +47,6 @@ public class Quiz{
 
     public void addFlashcard(String s){ // Use the constants at the top of the file to parse through a single-string list of Flashcard Parameters, create Flashcards, and add them to the Quiz
         String[] split = s.split(BTWN_TERMS, 0);
-        for(String str : split){
-            System.out.println(str);
-        }
         String[][] splits = new String[split.length][2];
         for(int i = 0; i < split.length; i++){
             splits[i] = split[i].split(BTWN_SIDES);
@@ -173,110 +170,110 @@ public class Quiz{
         "das Altenheim : nursing home | " + 
         "begegnen : to meet | " + 
         "die Bewegung : movement | " + 
-        // "ungefähr : approximately | " + 
-        // "der Patient : patient | " + 
-        // "einnehmen : to take in | " + 
-        // "unheimlich : scary, eerie | " + 
-        // "erleichtern : to facilitate | " + 
-        // "der Kranke : sick person | " + 
-        // "isoliert : isolated | " + 
-        // "zu Hause : at home | " + 
-        // "die Beschäftigung : occupation | " + 
-        // "die Industrie : industry | " + 
-        // "die Produktion : production | " + 
-        // "der Betrieb : business, company | " + 
-        // "menschlich : humane | " + 
-        // "der Arbeiter : worker | " + 
-        // "der Angestellte : employee | " + 
-        // "verschwinden : to disappear | " + 
-        // "der Arbeitsplatz : workplace | " + 
-        // "der Abschnitt : section | " + 
-        // "die Einleitung : introduction | " + 
-        // "springen : to jump | " + 
-        // "lösen : to solve | " + 
-        // "der Badeanzug : bathing suit | " + 
-        // "die Badehose : swimming trunks | " + 
-        // "alternativ : alternative | " + 
-        // "verbrauchen : to consume | " + 
-        // "wegen : because of | " + 
-        // "zahlreich : numerous | " + 
-        // "nachdenken über : to reflect about | " + 
-        // "handeln : to deal, trade | " + 
-        // "das Klima : climate | " + 
-        // "der Klimawandel : climate change | " + 
-        // "verschwenden : to waste | " + 
-        // "die Luft : air, breeze | " + 
-        // "der Kunststoff : synthetic material | " + 
-        // "das Insekt : insect | " + 
-        // "öffentlich : public | " + 
-        // "kostenlos : free of charge | " + 
-        // "der Umweltschutz : environmental protection | " + 
-        // "der Vortrag : lecture | " + 
-        // "der Zuhörer : audience | " + 
-        // "verständlich : comprehensible | " + 
-        // "die Präsentation : presentation | " + 
-        // "die Folie : slide | " + 
-        // "der Inhalt : content | " + 
-        // "die Struktur : structure | " + 
-        // "das Erlebnis : experience | " + 
-        // "der Zusammenhang : connection, context | " + 
-        // "der Abschluss : degree | " + 
-        // "die Aufmerksamkeit : attention | " + 
-        // "die Kommunikation : communication | " + 
-        // "die Temperatur : temperature | " + 
-        // "die Wissenschaft : science | " + 
-        // "die Musikanlage : stereo | " + 
-        // "die Klimaanlage : air conditioning | " + 
-        // "der Staub : dust | " + 
-        // "kommunizieren : to communicate | " + 
-        // "passend : suitable | " + 
-        // "die Technologie : technology | " + 
-        // "die Jugend : youth | " + 
-        // "forschen : to research; to investigate | " + 
-        // "anschließen : to plug in | " + 
-        // "erfinden : to invent | " + 
-        // "die Erfindung : invention | " + 
-        // "jederzeit : at any time | " + 
-        // "der Alarm : alarm | " + 
-        // "entwickeln : to develop | " + 
-        // "warnen vor : to warn about | " + 
-        // "der Unternehmer : entrepreneur, employer | " + 
-        // "die Bremse : brake (car) | " + 
-        // "der Strom : electricity, power | " + 
-        // "das Teil : part | " + 
-        // "der Wahnsinn : madness | " + 
-        // "die Datei : file | " + 
-        // "zeichnen : to draw | " + 
-        // "die Abgase : exhaust fumes | " + 
-        // "die Bedeutung : meaning | " + 
-        // "das Benzin : gasoline, fuel | " + 
-        // "das E-Bike : electric bike | " + 
-        // "elektrisch : electric | " + 
-        // "die Energie : energy, power | " + 
-        // "die Ladestation : charging station | " + 
-        // "die Steckdose : electrical outlet | " + 
-        // "tanken : to fill up | " + 
-        // "die Tankstelle : gas station | " + 
-        // "umweltfreundlich : environmentally friendly | " + 
-        // "sondern : but rather | " + 
-        // "die Elektromobilität : electromobility | " + 
-        // "die Meldung : announcement | " + 
-        // "die Medizin : medicine | " + 
-        // "das Gehirn : brain | " + 
-        // "ersetzen : to replace | " + 
-        // "die Entdeckung : discovery | " + 
-        // "die Pflanze : plant | " + 
-        // "der Mond : moon | " + 
-        // "mieten : to rent | " + 
-        // "wundern : to wonder about | " + 
-        // "einsetzen : to insert | " + 
-        // "die Forschung : research | " + 
-        // "die Wirklichkeit : reality | " + 
-        // "selbständig : independent | " + 
-        // "benötigen : to need | " + 
-        "allerdings : certainly, indeed | ");
+        "ungefähr : approximately | " + 
+        "der Patient : patient | " + 
+        "einnehmen : to take in | " + 
+        "unheimlich : scary, eerie | " + 
+        "erleichtern : to facilitate | " + 
+        "der Kranke : sick person | " + 
+        "isoliert : isolated | " + 
+        "zu Hause : at home | " + 
+        "die Beschäftigung : occupation | " + 
+        "die Industrie : industry | " + 
+        "die Produktion : production | " + 
+        "der Betrieb : business, company | " + 
+        "menschlich : humane | " + 
+        "der Arbeiter : worker | " + 
+        "der Angestellte : employee | " + 
+        "verschwinden : to disappear | " + 
+        "der Arbeitsplatz : workplace | " + 
+        "der Abschnitt : section | " + 
+        "die Einleitung : introduction | " + 
+        "springen : to jump | " + 
+        "lösen : to solve | " + 
+        "der Badeanzug : bathing suit | " + 
+        "die Badehose : swimming trunks | " + 
+        "alternativ : alternative | " + 
+        "verbrauchen : to consume | " + 
+        "wegen : because of | " + 
+        "zahlreich : numerous | " + 
+        "nachdenken über : to reflect about | " + 
+        "handeln : to deal, trade | " + 
+        "das Klima : climate | " + 
+        "der Klimawandel : climate change | " + 
+        "verschwenden : to waste | " + 
+        "die Luft : air, breeze | " + 
+        "der Kunststoff : synthetic material | " + 
+        "das Insekt : insect | " + 
+        "öffentlich : public | " + 
+        "kostenlos : free of charge | " + 
+        "der Umweltschutz : environmental protection | " + 
+        "der Vortrag : lecture | " + 
+        "der Zuhörer : audience | " + 
+        "verständlich : comprehensible | " + 
+        "die Präsentation : presentation | " + 
+        "die Folie : slide | " + 
+        "der Inhalt : content | " + 
+        "die Struktur : structure | " + 
+        "das Erlebnis : experience | " + 
+        "der Zusammenhang : connection, context | " + 
+        "der Abschluss : degree | " + 
+        "die Aufmerksamkeit : attention | " + 
+        "die Kommunikation : communication | " + 
+        "die Temperatur : temperature | " + 
+        "die Wissenschaft : science | " + 
+        "die Musikanlage : stereo | " + 
+        "die Klimaanlage : air conditioning | " + 
+        "der Staub : dust | " + 
+        "kommunizieren : to communicate | " + 
+        "passend : suitable | " + 
+        "die Technologie : technology | " + 
+        "die Jugend : youth | " + 
+        "forschen : to research; to investigate | " + 
+        "anschließen : to plug in | " + 
+        "erfinden : to invent | " + 
+        "die Erfindung : invention | " + 
+        "jederzeit : at any time | " + 
+        "der Alarm : alarm | " + 
+        "entwickeln : to develop | " + 
+        "warnen vor : to warn about | " + 
+        "der Unternehmer : entrepreneur, employer | " + 
+        "die Bremse : brake (car) | " + 
+        "der Strom : electricity, power | " + 
+        "das Teil : part | " + 
+        "der Wahnsinn : madness | " + 
+        "die Datei : file | " + 
+        "zeichnen : to draw | " + 
+        "die Abgase : exhaust fumes | " + 
+        "die Bedeutung : meaning | " + 
+        "das Benzin : gasoline, fuel | " + 
+        "das E-Bike : electric bike | " + 
+        "elektrisch : electric | " + 
+        "die Energie : energy, power | " + 
+        "die Ladestation : charging station | " + 
+        "die Steckdose : electrical outlet | " + 
+        "tanken : to fill up | " + 
+        "die Tankstelle : gas station | " + 
+        "umweltfreundlich : environmentally friendly | " + 
+        "sondern : but rather | " + 
+        "die Elektromobilität : electromobility | " + 
+        "die Meldung : announcement | " + 
+        "die Medizin : medicine | " + 
+        "das Gehirn : brain | " + 
+        "ersetzen : to replace | " + 
+        "die Entdeckung : discovery | " + 
+        "die Pflanze : plant | " + 
+        "der Mond : moon | " + 
+        "mieten : to rent | " + 
+        "wundern : to wonder about | " + 
+        "einsetzen : to insert | " + 
+        "die Forschung : research | " + 
+        "die Wirklichkeit : reality | " + 
+        "selbständig : independent | " + 
+        "benötigen : to need | " + 
+        "allerdings : certainly, indeed | " );
         System.out.println(german);
 
-        german.test('b');
+        //german.test('b');
     }
 }
